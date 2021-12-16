@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7794386789341783726}
   - component: {fileID: 4815422769569412954}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree_2
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomIgnoreRuleModifier: 1
   chanceToIgnoreRule: 0.3
-  iterationLimit: 3
+  iterationLimit: 2
   Branch: {fileID: 4849778679611524220, guid: 7a7fe88e82afb0f49adad46b74f3c813, type: 3}
   Leaf: {fileID: 3414446004791770582, guid: 82df91fc99cdc034980e9aadec582c53, type: 3}
   lengthBranch: 10
   angle: 30
+  TrunkWidth: 7
   rules:
   - {fileID: 11400000, guid: 4e81d09c6f9c6d349a9808ee2ea6413a, type: 2}
   - {fileID: 11400000, guid: d11029cb90f9cb94f91e95903a469c9d, type: 2}
   axiom: X
-  variance: 10
