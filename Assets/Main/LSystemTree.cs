@@ -53,8 +53,10 @@ public class LSystemTree : MonoBehaviour
         };
         Generate();
     }*/
+    
      private void Start()
     {
+        
         transformStack = new Stack<TransformInfo>();
         // the only test we perform on the validity of the L-system is to have the axiom not null.
         if (axiom != string.Empty)
@@ -96,6 +98,8 @@ public class LSystemTree : MonoBehaviour
         //it is also good to say that usualy u dont pop until the trunk as been created, so basically 99% of time the first [ it's always trunk
         //with the second one the problems mught start for different structures of L-Systems.
         int countForTrunk = 2; 
+        //will be usefull at the end
+        List<GameObject> TreeComponents = new List<GameObject>();
         foreach(char c in sequence){
             switch(c)
             {   
@@ -103,30 +107,23 @@ public class LSystemTree : MonoBehaviour
                 //X[FFFFFFFFFFFFFFF[-X[FFFFFFF[-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][*-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][/-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]]]+FFFFFFFFFFFFFFF[+L]][*-X[FFFFFFF[-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][*-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][/-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]]]+FFFFFFFFFFFFFFF[+L]][/-X[FFFFFFF[-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][*-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][/-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]]]+FFFFFFFFFFFFFFF[+L]-X[FFFFFFF[-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][*-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]][/-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]+FFFFFFF[+L]-X[FFF[-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][*-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]][/-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]+FFF[+L]-X[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]]]]]]]
                 //PERFECT RULE:[F[-X+F[+L]][*-X+F[+L]][/-X+F[+L]-X]]
 
-
                 //devo far scalare il cerchio in base alla grandezza dell'albero.
                 case 'F':
                     Vector3 initialPosision = transform.position;
                     transform.Translate(Vector3.up * lengthBranch); //Moves the transform in the direction and distance of translation.
 
-                    GameObject treeSegment = Instantiate(Branch);
-                    treeSegment.transform.SetParent(this.transform, false);   //put the leaf and the branches under the tree parent, the movement is applied relative to the transform's local axes. 
+                    GameObject treeSegment = Instantiate(Branch, transform);
                     treeSegment.GetComponent<LineRenderer>().SetPosition(0,initialPosision); 
                     treeSegment.GetComponent<LineRenderer>().SetPosition(1,transform.position);
                     treeSegment.GetComponent<LineRenderer>().startWidth = TrunkWidth;
                     treeSegment.GetComponent<LineRenderer>().endWidth = TrunkWidth;
+                    TreeComponents.Add(treeSegment);
                     break;
                 case 'L':  
                     Vector3 IP = new Vector3(transform.position.x, transform.position.y-4, transform.position.z); // sposto di 2 in su le y.
-                    // probabilmente meglio il meshRenderer che le linee per le foglie. per il branch potrei anche tener le linee
                     GameObject l = Instantiate(Leaf);
-                    
                     l.transform.position = IP;
-                    // makes the child keep its local orientation rather than
-                    // its global orientation.
-
-                    //FUNZIONA NEL TREESPAWN MA NON NEL PROJECT CON PERLIN NOISEE
-                    //l.transform.SetParent(this.transform, false);   //put the leaf under the tree parent
+                    TreeComponents.Add(l);
                     break;
                     //X = basic structure of the tree
                 case 'X':
@@ -169,6 +166,10 @@ public class LSystemTree : MonoBehaviour
             }
             i++;
         }
-
+        //Keep the unity management of objects nice and clean
+        //REMINDER FOR MYSELF: if I add them to the parent at each iteration, then the leaves' position will be buggy so I need to add them later
+        foreach(GameObject g in TreeComponents){
+            g.transform.SetParent(transform);
+        }
     }
 }

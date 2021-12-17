@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomIgnoreRuleModifier: 1
-  chanceToIgnoreRule: 0.3
-  iterationLimit: 2
+  chanceToIgnoreRule: 0.33
+  iterationLimit: 3
   Branch: {fileID: 4849778679611524220, guid: 7a7fe88e82afb0f49adad46b74f3c813, type: 3}
   Leaf: {fileID: 3414446004791770582, guid: 82df91fc99cdc034980e9aadec582c53, type: 3}
   lengthBranch: 10

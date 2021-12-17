@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 542119350}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -398,7 +398,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: b8405cc2bcbc942c28610d61bc160e77, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &542119351
 Terrain:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a49604788130c429bc289a97186827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HowManyTrees: 20
+  HowManyTrees: 14
   Tree:
   - {fileID: 5767729368413442972, guid: 48a306004f18b0943aa29d54429fd977, type: 3}
   - {fileID: 7243272384548578293, guid: e29d9c522ae794045bba6e24b331bec9, type: 3}
@@ -502,7 +502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619389522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.425102, y: 121.97392, z: 271.93817}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

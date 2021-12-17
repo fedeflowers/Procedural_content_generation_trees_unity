@@ -35,15 +35,17 @@ public class TreeSpawnManager : MonoBehaviour
     }
 
     private void SpawnTrees(){
-         int RandomSpawn = 0;
+        int RandomSpawn = 0;
         for(int i = 0; i < HowManyTrees; i++){
             RandomSpawn = Random.Range(0, Tree.Count); // could be a number in which the list is pointing to null since another programmer didn't assign the gameObject to spawn.
             //let's make it more clear to the user:
             try{
-                GameObject tree = Instantiate(Tree[RandomSpawn],  GeneratePosition(), Quaternion.identity);// here are spawned but the y needs to be modified correctly, so that trees will appear on the ground and not floating
+                Vector3 start = GeneratePosition();
+                GameObject tree = Instantiate(Tree[RandomSpawn], start, Quaternion.identity);// here are spawned but the y needs to be modified correctly, so that trees will appear on the ground and not floating
                 if(Physics.Raycast(tree.transform.position, transform.TransformDirection(Vector3.down), out RaycastHit rayInfo)){
                     tree.transform.position = rayInfo.point; //move position where it hits the point
-                //Debug.Log(rayInfo.point);
+                    //tree.transform.SetParent(transform, false);
+                    Debug.Log(rayInfo.collider.gameObject.tag);
                 }
 
             }catch(UnassignedReferenceException){
