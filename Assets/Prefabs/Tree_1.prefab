@@ -45,13 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomIgnoreRuleModifier: 1
   chanceToIgnoreRule: 0.33
+  randomizeIterations: 1
+  randomizeHeight: 1
   iterationLimit: 3
   Branch: {fileID: 4849778679611524220, guid: 7a7fe88e82afb0f49adad46b74f3c813, type: 3}
   Leaf: {fileID: 3414446004791770582, guid: 82df91fc99cdc034980e9aadec582c53, type: 3}
-  lengthBranch: 10
   angle: 30
-  TrunkWidth: 7
   rules:
   - {fileID: 11400000, guid: 1aa8c43ad08b6f146be2bf5d98c4a495, type: 2}
-  - {fileID: 11400000, guid: e7814ea4e3fdfed4090f676fed5f8baf, type: 2}
+  - {fileID: 11400000, guid: 4e81d09c6f9c6d349a9808ee2ea6413a, type: 2}
   axiom: X

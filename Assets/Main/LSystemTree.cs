@@ -11,21 +11,23 @@ public class TransformInfo
     public Vector3 position;
     public Quaternion rotation;
 }
-//DA DOCUMENTARE ASSOLUTAMENTE
 public class LSystemTree : MonoBehaviour
 {
     public bool randomIgnoreRuleModifier = true;
     public float chanceToIgnoreRule = 0.3f;
-    [Range(2, 4)]
-    public int iterationLimit = 1;
+    
+    [SerializeField] private bool randomizeIterations = false;
+    [SerializeField] private bool randomizeHeight = false;
+    [Range(2, 4)][SerializeField] private int iterationLimit = 2;
     [SerializeField] private GameObject Branch;
     [SerializeField] private GameObject Leaf;
-    [SerializeField] private float lengthBranch = 10f;
+    private float lengthBranch = 10f; //keep it private so the user can randomize height by just clicking the bool randomizeHeight, without manually changing the height variable
     //[SerializeField] private float lengthLeaf = 10f;
     [SerializeField] private float angle = 20f;
     //private const float WidthBranches = 8f;
-    public float TrunkWidth = 7f; // I use this width for branches too, but for the user of this script this change will affect only the width of the trunk.
-                                // the width of the branches is based on the width of the iterations.
+    private float TrunkWidth = 7f;  //I want to keep this private because the aim of the project it's creating multiple trees in random form,
+                                    //so I don't want that an user changes the width of the trunk for making a single tree beatiful, I want it to be
+                                    //always the one that I designed so it will look good with all types of iterations and so will be considered "ok" for all types of possible random trees
     private Stack<TransformInfo> transformStack;
     //private Dictionary<char, string> rules;
     private LSystemGenerator lsystem;
@@ -59,6 +61,12 @@ public class LSystemTree : MonoBehaviour
         
         transformStack = new Stack<TransformInfo>();
         // the only test we perform on the validity of the L-system is to have the axiom not null.
+        if(randomizeIterations){
+            iterationLimit =  UnityEngine.Random.Range(2, 5); // 2, 3, 4 are the possible iterations
+        }
+        if(randomizeHeight){
+            lengthBranch = UnityEngine.Random.Range(6f, 11f); //from 6 to 10
+        }
         if (axiom != string.Empty)
         {
             lsystem = new LSystemGenerator(rules, iterationLimit, randomIgnoreRuleModifier, chanceToIgnoreRule);
@@ -96,7 +104,10 @@ public class LSystemTree : MonoBehaviour
         //Basically a counter for the [, unitil the second [, I assume that the branches are trunk.
         //It's not the best since if I have a different structure of the tree it might produce not so beatiful results
         //it is also good to say that usualy u dont pop until the trunk as been created, so basically 99% of time the first [ it's always trunk
-        //with the second one the problems mught start for different structures of L-Systems.
+        //with the second one the problems might start for different structures of L-Systems.
+        //Even if it's not the best for modularity I couldn't find a better solution, I tried to put a rule T-->TT and the axiom to become TX so 
+        //I  had the trunk before the actually tree, but the problem is that removing the first F didn't just remove the first part of the trunk but it also
+        //make the tree more compact and make it look really bad, so I decided to keep this not so modular implementation that works good with my grammars.
         int countForTrunk = 2; 
         //will be usefull at the end
         List<GameObject> TreeComponents = new List<GameObject>();
@@ -147,7 +158,8 @@ public class LSystemTree : MonoBehaviour
                     //save turtle position
                 case '[':
                     //The bigger the tree(iteration limit) the bigger the width of the branches.
-                    if(countForTrunk <= 0){TrunkWidth = 2f + iterationLimit/2;}//if the trunk is ended i recompute the width to the width of the branches
+                    if(countForTrunk <= 0){TrunkWidth = 2f + iterationLimit/2;}else{TrunkWidth = TrunkWidth + iterationLimit/2;}//if the trunk is ended i recompute the width to the width of the branches
+                    //this solution is hardcoded to keep it "cool" with all possible random trees that my script can generate.
                     countForTrunk--;
 
                     transformStack.Push(new TransformInfo(){

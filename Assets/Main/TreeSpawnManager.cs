@@ -20,10 +20,8 @@ public class TreeSpawnManager : MonoBehaviour
 
     //Genereate random Vector3, consider that the ground is 500x500 meters;
 
-    //can happen that 2 trees are instantiated at same position, BUT IS THIS APROBLEM?  in a forest the trees are everyone nearby, if I want to create a forest like effect
+    //can happen that 2 trees are instantiated at same position, BUT IS THIS APROBLEM?  in a forest the trees are all nearby, if I want to create a forest like effect
     // the trees must be near.
-
-    //what if I generate a position using perlin noise? OR otherwhise think of a methodo to not make them very near, replace linerenderers with gameobjects and apply colliders to tree so that raycast can know it hits a tree
     Vector3 GeneratePosition()
     {
         //240 because I don't want them to be placed in the edges
@@ -44,8 +42,7 @@ public class TreeSpawnManager : MonoBehaviour
                 GameObject tree = Instantiate(Tree[RandomSpawn], start, Quaternion.identity);// here are spawned but the y needs to be modified correctly, so that trees will appear on the ground and not floating
                 if(Physics.Raycast(tree.transform.position, transform.TransformDirection(Vector3.down), out RaycastHit rayInfo)){
                     tree.transform.position = rayInfo.point; //move position where it hits the point
-                    //tree.transform.SetParent(transform, false);
-                    Debug.Log(rayInfo.collider.gameObject.tag);
+                    //Debug.Log(rayInfo.collider.gameObject.tag);
                 }
 
             }catch(UnassignedReferenceException){
