@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34fa6708c49104b38884f77ae8937163, type: 3}
-  m_Name: TreeTRY
+  m_Name: Tree1_X
   m_EditorClassIdentifier: 
   letter: X
   results:
-  - X[FFF[-X[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]+FFF[+LX[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]]][*-X[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]+FFF[+LX[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]]][/-X[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]+FFF[+LX[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]]-X[F[-X+F[+LX]][*-X+F[+LX]][/-X+F[+LX]-X]]]]
+  - '[F[X[[[+F]-FL][-X+]][*-X-][+FL]-FL][/-X*+]]'
   randomResult: 0
